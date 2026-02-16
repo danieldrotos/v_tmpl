@@ -47,10 +47,7 @@ module test_mod();
 
    // Place your tested system here
 
-   wire [7:0] d;
-   sevenseg_decoder m(.A(v3),.B(v2),.C(v1),.D(v0),
-		       .a(d[0]),.b(d[1]),.c(d[2]),.d(d[3]),.e(d[4]),.f(d[5]),.g(d[6]));
-   sim_b7seg dd(.d(d));
+
    
    /******************************************************/
    // Save simulation result to a file for examine it later
