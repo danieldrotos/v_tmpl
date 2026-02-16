@@ -9,7 +9,7 @@ module test_mod();
    
    // Generate all combinations of input variables
    sim_bin   gen_bin (.b3(v3), .b2(v2), .b1(v1), .b0(v0));
-   //sim_bbin  geb_bbin(.b(vb));
+   sim_bbin  geb_bbin(.b(vb));
 
    // Other input generators:
    //////////////////////////
@@ -47,7 +47,10 @@ module test_mod();
 
    // Place your tested system here
 
-
+   wire [7:0] d;
+   sevenseg_decoder m(.A(v3),.B(v2),.C(v1),.D(v0),
+		       .a(d[0]),.b(d[1]),.c(d[2]),.d(d[3]),.e(d[4]),.f(d[5]),.g(d[6]));
+   sim_b7seg dd(.d(d));
    
    /******************************************************/
    // Save simulation result to a file for examine it later
@@ -524,3 +527,16 @@ module sim_stibitz
      {s3,s2,s1,s0}=4'b0011;
    
 endmodule // sim_stibitz
+
+
+module sim_bstibitzv
+  (
+   output wire [3:0] v
+   );
+
+   sim_stibitz stibits(.s0(v[0]),
+		       .s1(v[1]),
+		       .s2(v[2]),
+		       .s3(v[3]));
+		       
+endmodule // sim_bstibitzv
